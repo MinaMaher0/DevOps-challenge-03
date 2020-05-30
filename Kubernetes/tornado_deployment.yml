@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  labels:
+    app: tornado
+spec:
+  selector:
+    matchLabels:
+      app: tornado
+      tier: app
+  template:
+    metadata:
+      labels:
+        app: tornado
+        tier: app
+    spec:
+      containers:
+      - name: tornado
+        image: minamaher0/tornado:IMAGE_TAG
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ENVIRONMENT
+          value: PROD
+        - name: HOST
+          value: localhost
+        - name: PORT
+          value: "8000"
+        - name: REDIS_HOST
+          value: my-redis
+        - name: REDIS_PORT
+          value: "6379"
+        - name: REDIS_DB
+          value: "0"

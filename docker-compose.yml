@@ -1,0 +1,21 @@
+version: "3"
+services:
+  redis: 
+    image: redis:latest
+    ports:
+    - "6379:6379"
+    container_name: redis
+  app:
+    build: minamaher0/tornado:${IMAGE_TAG}
+    depends_on: 
+      - redis
+    ports: 
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=${ENV_TYPE}
+      - HOST=localhost
+      - PORT=8000
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_DB=0
+    container_name: App
