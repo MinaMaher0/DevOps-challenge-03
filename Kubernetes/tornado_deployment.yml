@@ -27,7 +27,7 @@ spec:
         - name: PORT
           value: "8000"
         - name: REDIS_HOST
-          value: my-redis
+          value: "10.103.171.235"
         - name: REDIS_PORT
           value: "6379"
         - name: REDIS_DB
