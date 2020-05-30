@@ -2,7 +2,7 @@ pipeline {
     agent none
     stages {
         stage('build, test and deploy to Development environment') {
-            when {t
+            when {
                 branch 'development'  
             }
             agent { label 'development' }
