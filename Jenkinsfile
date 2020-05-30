@@ -60,7 +60,7 @@ pipeline {
                         ENV_TYPE = 'PROD'
                     }
                     steps {
-                        sh 'sed -i \'s/IMAGE_TAG/'${BUILD_NUMBER}'/g\' Kubernetes/tornado_deployment.yml'
+                        sh 'sed -i \'s/IMAGE_TAG/$BUILD_NUMBER/g\' Kubernetes/tornado_deployment.yml'
                         sh '''
                             export KUBECONFIG=/home/ubuntu/.kube/config
                             kubectl apply -f Kubernetes/redis_deployment.yml
