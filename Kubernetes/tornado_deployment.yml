@@ -9,12 +9,10 @@ spec:
   selector:
     matchLabels:
       app: tornado
-      tier: app
   template:
     metadata:
       labels:
         app: tornado
-        tier: app
     spec:
       containers:
       - name: tornado

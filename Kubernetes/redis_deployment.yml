@@ -8,12 +8,10 @@ spec:
   selector:
     matchLabels:
       app: redis
-      tier: db
   template:
     metadata:
       labels:
         app: redis
-        tier: db
     spec:
       containers:
       - name: redis
