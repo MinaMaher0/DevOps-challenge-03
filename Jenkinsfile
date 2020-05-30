@@ -45,6 +45,10 @@ pipeline {
                     }
                 }
                 stage('push app image to docker hub') {
+                    environment {
+                        docker_username     = credentials('docker_username')
+                        docker_password = credentials('docker_password')
+                    }
                     steps {
                         sh 'docker login -u $docker_username -p $docker_password'
                         sh 'docker tag tornado:${BUILD_NUMBER} $docker_username/tornado:${BUILD_NUMBER}'
