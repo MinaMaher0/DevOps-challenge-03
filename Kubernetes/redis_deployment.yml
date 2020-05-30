@@ -1,9 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis
-  labels:
-    app: redis
+  name: rediss
 spec:
   selector:
     matchLabels:

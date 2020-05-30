@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: tornado
-  labels:
-    app: tornado
 spec:
   replicas: 3
   selector:
@@ -27,7 +25,7 @@ spec:
         - name: PORT
           value: "8000"
         - name: REDIS_HOST
-          value: "10.103.171.235"
+          value: my-redis
         - name: REDIS_PORT
           value: "6379"
         - name: REDIS_DB
