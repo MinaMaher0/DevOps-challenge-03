@@ -8,8 +8,10 @@ pipeline {
             agent { label 'development' }
             stages{
                 stage('Testing'){
-                    sh 'docker build -t tornado:${BUILD_NUMBER} .'
-                    sh 'docker run --rm --name testApp tornado:${BUILD_NUMBER}'
+                    steps {
+                        sh 'docker build -t tornado:${BUILD_NUMBER} .'
+                        sh 'docker run --rm --name testApp tornado:${BUILD_NUMBER}'
+                    }
                 }
                 stage('clean development envirnment') {
                     steps {
@@ -37,13 +39,17 @@ pipeline {
             agent { label 'k8s-master' }
             stages{
                 stage('Testing'){
-                    sh 'docker build -t tornado:${BUILD_NUMBER} .'
-                    sh 'docker run --rm --name testApp tornado:${BUILD_NUMBER}'
+                    steps {
+                        sh 'docker build -t tornado:${BUILD_NUMBER} .'
+                        sh 'docker run --rm --name testApp tornado:${BUILD_NUMBER}'
+                    }
                 }
                 stage('push app image to docker hub') {
-                    sh 'docker login -u $docker_username -p $docker_password'
-                    sh 'docker tag tornado:${BUILD_NUMBER} $docker_username/tornado:${BUILD_NUMBER}'
-                    sh 'docker push $docker_username/tornado:${BUILD_NUMBER}'
+                    steps {
+                        sh 'docker login -u $docker_username -p $docker_password'
+                        sh 'docker tag tornado:${BUILD_NUMBER} $docker_username/tornado:${BUILD_NUMBER}'
+                        sh 'docker push $docker_username/tornado:${BUILD_NUMBER}'
+                    }
                 }
                 stage('deploy to production envirnment'){
                     environment {
