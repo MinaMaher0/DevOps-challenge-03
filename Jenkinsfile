@@ -41,7 +41,7 @@ pipeline {
                 stage('Testing'){
                     steps {
                         sh 'docker build -t tornado:${BUILD_NUMBER} .'
-                        sh 'docker run --rm --name testApp tornado:${BUILD_NUMBER}'
+                       // sh 'docker run --rm --name testApp tornado:${BUILD_NUMBER}'
                     }
                 }
                 stage('push app image to docker hub') {
