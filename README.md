@@ -1,7 +1,6 @@
 # DevOps Challenge Demo Code:
 
-[![Build Status](http://52.205.138.131:8080/buildStatus/icon?job=tornado%2Fmaster)](http://52.205.138.131:8080/job/tornado/job/master/)
-
+![](./Screenshot-20200530224557-1165x195.png)
 This application will be used as a demo for DevOps Challenges.
 
 You should fork/clone this repository to use as a basis for the challenge.
