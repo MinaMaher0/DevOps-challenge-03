@@ -61,6 +61,7 @@ pipeline {
                     }
                     steps {
                         sh 'sed -i \'s/IMAGE_TAG/${BUILD_NUMBER}/g\' Kubernetes/tornado_deployment.yml'
+                        sh 'kubectl get nodes'
                         sh 'kubectl apply -f Kubernetes/redis_deployment.yml'
                         sh 'kubectl apply -f Kubernetes/redis_svc.yml'
                         sh 'kubectl apply -f Kubernetes/tornado_deployment.yml'
