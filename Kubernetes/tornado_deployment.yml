@@ -5,6 +5,7 @@ metadata:
   labels:
     app: tornado
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: tornado
