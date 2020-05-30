@@ -10,7 +10,7 @@ pipeline {
                 stage('Testing'){
                     steps {
                         sh 'docker build -t tornado:${BUILD_NUMBER} .'
-                        sh 'docker run --rm --name testApp tornado:${BUILD_NUMBER}'
+                        sh 'docker run --rm --name testApp tornado:${BUILD_NUMBER} tests/test.py'
                     }
                 }
                 stage('clean development envirnment') {
@@ -41,7 +41,7 @@ pipeline {
                 stage('Testing'){
                     steps {
                         sh 'docker build -t tornado:${BUILD_NUMBER} .'
-                       // sh 'docker run --rm --name testApp tornado:${BUILD_NUMBER}'
+                        sh 'docker run --rm --name testApp tornado:${BUILD_NUMBER} tests/test.py'
                     }
                 }
                 stage('push app image to docker hub') {
